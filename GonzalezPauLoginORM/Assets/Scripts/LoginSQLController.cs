@@ -5,15 +5,16 @@ using System.Data.Common;
 using System.IO;
 using TMPro;
 using UnityEngine;
-
+using SQLite4Unity3d;
 
 using Mono.Data.Sqlite;
-using Unity.VisualScripting.Dependencies.Sqlite;
 public class LoginSQLController : MonoBehaviour
 {
     private string dbUri;
-    private IDbConnection dbConnection;
     public static int idUsuario;
+    private SQLiteConnection dbConnection;
+
+
     [SerializeField] TMP_InputField nombreUsuario;
     [SerializeField] TMP_InputField contraseña;
     [SerializeField] GameObject panelErrorUsuario;
@@ -25,7 +26,7 @@ public class LoginSQLController : MonoBehaviour
 
         AssertFolder();
         
-        dbConnection = new SqliteConnection(Common_DB.dbUri);
+        dbConnection = new SQLiteConnection(Common_DB.dbUri);
         CreateDatabaseIfNecessary();
     }
     void AssertFolder()
@@ -38,7 +39,6 @@ public class LoginSQLController : MonoBehaviour
 
     public void CreateDatabaseIfNecessary()
     {
-        dbConnection.Open();
-        //dbConnection.Databa
+        dbConnection.CreateTable<Usuario>();
     }
 }
