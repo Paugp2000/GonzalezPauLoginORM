@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.Sqlite;
+using SQLite4Unity3d;
 using UnityEngine;
 
 public class Usuario
 {
-    [PrimaryKey, AutoIncrement]
-    public int Id { get; set; }
+
+    [PrimaryKey, AutoIncrement] public int Id { get; set; }
     public string NombreUsuario { get; set; }
     public string Contraseña { get; set; }
 
